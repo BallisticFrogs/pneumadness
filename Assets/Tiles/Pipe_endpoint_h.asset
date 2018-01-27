@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c9c41714fd6ae941933c3334d6e159a, type: 3}
-  m_Name: Pipe_endpoint
+  m_Name: Pipe_endpoint_h
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 09f03b1c19a148f4da4248b37e449538, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dda88ca4f71bac241b2faaf645c71262, type: 3}
   m_Color: {r: 0.7352941, g: 0.14057094, b: 0.14057094, a: 1}
   m_Transform:
     e00: 1
