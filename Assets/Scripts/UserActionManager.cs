@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PipeManager : MonoBehaviour {
+public class UserActionManager : MonoBehaviour {
 
-    public static PipeManager INSTANCE;
+    public static UserActionManager INSTANCE;
 
     private Tilemap tilemapObj;
 
@@ -32,11 +32,12 @@ public class PipeManager : MonoBehaviour {
             Debug.Log("mousepos = " + mousepos);
             Vector3 cellPosition = grid.WorldToCell(mousepos);
             Vector3Int cellPositionInt = Vector3Int.CeilToInt(cellPosition);
-            Debug.Log("cellPosition = " + cellPositionInt);/*
-            tilemapObj.SetColor(cellPositionInt, Color.green);
+            Debug.Log("cellPosition = " + cellPositionInt);
+
             tilemapObj.SetTile(cellPositionInt, tubeTile);
-            tilemapObj.RefreshTile(cellPositionInt);*/
+            tilemapObj.RefreshTile(cellPositionInt);
         }
   
     }
+    
 }
