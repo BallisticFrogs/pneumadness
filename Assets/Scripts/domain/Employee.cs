@@ -1,12 +1,13 @@
-﻿namespace domain
-{
-    public class Employee
-    {
-        public readonly int index;
+﻿using UnityEngine;
 
-        public Employee(int index)
-        {
-            this.index = index;
-        }
+namespace domain
+{
+    public class Employee : MonoBehaviour
+    {
+
+        public bool active;
+
+        public Vector3Int pipeEndpoint;
+
     }
 }
