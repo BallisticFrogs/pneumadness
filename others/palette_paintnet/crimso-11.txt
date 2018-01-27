@@ -1,0 +1,21 @@
+;paint.net Palette File
+;Downloaded from Lospec.com/palette-list
+;Palette Name: Crimso 11
+;Description: 2nd place winner of the <a href="http://http://pixeljoint.com/forum/forum_posts.asp?TID=22582&PN=4">PixelJoint 16 color palette competition</a> (2015). Created by <a href="http://pixeljoint.com/p/38516.htm">Crimso</a>.
+;Colors: 16
+FFffffe3
+FFf3d762
+FFbf9651
+FF769a55
+FFcb5e31
+FF8e393d
+FF7a4962
+FF5e4531
+FF8ec3cf
+FF867696
+FF456e51
+FF3d6286
+FF353d5a
+FF232e32
+FF41292d
+FF110b11
