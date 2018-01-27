@@ -8,6 +8,8 @@ public class PipeTile : Tile
 {
     public TileType Type;
 
+    public bool endpoint;
+
     [MenuItem("Assets/Create/PipeTile")]
     public static void create()
     {
