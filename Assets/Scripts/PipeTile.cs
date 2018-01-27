@@ -7,4 +7,5 @@ public class PipeTile : Tile
     public TileType Type;
 
     public bool endpoint;
+
 }

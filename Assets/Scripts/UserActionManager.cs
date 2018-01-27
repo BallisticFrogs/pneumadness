@@ -19,7 +19,7 @@ public class UserActionManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-         
+        UIManager.INSTANCE.updateQueue(QueueManager.INSTANCE.GetNextPipe());
     }
 
     // Update is called once per frame 
@@ -32,6 +32,7 @@ public class UserActionManager : MonoBehaviour {
                 
             PipeTile pipe = QueueManager.INSTANCE.DequeuePipe();
 
+            UIManager.INSTANCE.updateQueue(QueueManager.INSTANCE.GetNextPipe());
             tilemapObj.SetTile(cellPositionInt, pipe);
             tilemapObj.RefreshTile(cellPositionInt);
 

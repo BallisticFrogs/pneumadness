@@ -24,10 +24,9 @@ public class QueueManager : MonoBehaviour
     public PipeTile tubeTU;
 
     // Use this for initialization
-    void Start ()
+    void Awake()
     {
         INSTANCE = this;
-
         availableTubeWithProba.Add(new KeyValuePair<PipeTile, int>(tubeBendDr, 9));
         availableTubeWithProba.Add(new KeyValuePair<PipeTile, int>(tubeBendDl, 9));
         availableTubeWithProba.Add(new KeyValuePair<PipeTile, int>(tubeBendUl, 9));
@@ -47,15 +46,15 @@ public class QueueManager : MonoBehaviour
 
 	}
 
-    public Queue<PipeTile> GetQueue()
-    {
-        return pipeQueue;
-    }
-
     public PipeTile DequeuePipe()
     {
         pipeQueue.Enqueue(GetRandomTubeWithProba());
         return pipeQueue.Dequeue();
+    }
+
+    public PipeTile[] GetNextPipe()
+    {
+        return pipeQueue.ToArray();
     }
 
     private PipeTile GetRandomTubeWithProba()
