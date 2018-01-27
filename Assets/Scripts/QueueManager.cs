@@ -11,8 +11,6 @@ public class QueueManager : MonoBehaviour
 
     private List<KeyValuePair<PipeTile, int>> availableTubeWithProba = new List<KeyValuePair<PipeTile, int>>();
 
-    private Random random = new Random();
-
     public PipeTile tubeBendDr;
     public PipeTile tubeBendDl;
     public PipeTile tubeBendUl;
@@ -48,13 +46,8 @@ public class QueueManager : MonoBehaviour
         }
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public Queue<PipeTile> getQueue()
+    public Queue<PipeTile> GetQueue()
     {
         return pipeQueue;
     }

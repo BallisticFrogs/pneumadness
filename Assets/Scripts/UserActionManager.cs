@@ -32,18 +32,9 @@ public class UserActionManager : MonoBehaviour {
                 
             PipeTile pipe = QueueManager.INSTANCE.DequeuePipe();
 
-            if (tilemapObj.GetTile(cellPositionInt) == null)
-            {
-                tilemapObj.SetTile(cellPositionInt, pipe);
-                tilemapObj.RefreshTile(cellPositionInt);
-                //TODO play success tube placement
-            }
-            else
-            {
-                //TODO play error tube placement
-            }
+            tilemapObj.SetTile(cellPositionInt, pipe);
+            tilemapObj.RefreshTile(cellPositionInt);
 
-            
         }
   
     }
