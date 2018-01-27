@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4346952707114716}
   - component: {fileID: 212248595553246838}
+  - component: {fileID: 114485723694810886}
   m_Layer: 0
   m_Name: cursor
   m_TagString: Untagged
@@ -40,6 +41,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.241005}
+--- !u!114 &114485723694810886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748118039416908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3ee01d52614735ad2c8c9566f3be65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIndex: 1
+  speed: 10
 --- !u!212 &212248595553246838
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -6,22 +6,54 @@ public class CursorManager : MonoBehaviour
 {
     public static CursorManager INSTANCE;
 
-    public GameObject tilemapObj;
+    public GameObject tilemapPipesObj;
+    public GameObject tilemapEndpointsObj;
 
-    private Tilemap tilemap;
+    private Tilemap tilemapPipes;
+    private Tilemap tilemapEndpoints;
     private Dictionary<int, FlowMap> flowmapsById = new Dictionary<int, FlowMap>();
 
     void Awake()
     {
         INSTANCE = this;
-        tilemap = GetComponent<Tilemap>();
+        tilemapPipes = tilemapPipesObj.GetComponent<Tilemap>();
+        tilemapEndpoints = tilemapEndpointsObj.GetComponent<Tilemap>();
     }
 
-    public void RegisterEndpoint(int index)
+    public void RegisterEndpoint(int index, Vector3Int endpoint)
     {
-        BoundsInt bounds = tilemap.cellBounds;
-        FlowMap flowMap = new FlowMap(index, bounds.size.x, bounds.size.y);
+        BoundsInt bounds = tilemapPipes.cellBounds;
+        FlowMap flowMap = new FlowMap(index, 50, 50);
+        UpdateFlowMap(flowMap, endpoint);
         flowmapsById.Add(flowMap.employee, flowMap);
+    }
+
+    public Vector3Int? FindNextCell(int targetIndex, Vector3Int currentCell)
+    {
+        FlowMap map;
+        flowmapsById.TryGetValue(targetIndex, out map);
+
+        int lowestScore = int.MaxValue;
+        Vector3Int? lowestScoreCell = null;
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                var coords = new Vector3Int(currentCell.x + i + map.grid.Length / 2,
+                    currentCell.y + j + map.grid[0].Length / 2,
+                    currentCell.z);
+                if (coords.x > map.grid.Length || coords.y > map.grid[0].Length) continue;
+
+                var cellScore = map.grid[coords.x][coords.y];
+                if (cellScore > 0 && cellScore < lowestScore)
+                {
+                    lowestScore = cellScore;
+                    lowestScoreCell = new Vector3Int(currentCell.x + i, currentCell.y + j, currentCell.z);
+                }
+            }
+        }
+
+        return lowestScoreCell;
     }
 
     private void UpdateFlowMaps()
@@ -38,9 +70,6 @@ public class CursorManager : MonoBehaviour
     {
         // TODO if pipe tiles are destroyed, we should reset the all grid but ignore for now
 
-        BoundsInt bounds = tilemap.cellBounds;
-        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
-
         HashSet<Vector3Int> closedList = new HashSet<Vector3Int>();
         Queue<Vector3Int> openList = new Queue<Vector3Int>();
         Queue<Vector3Int> nextOpenList = new Queue<Vector3Int>();
@@ -49,6 +78,8 @@ public class CursorManager : MonoBehaviour
         int score = 0;
         while (nextOpenList.Count > 0)
         {
+            score++;
+
             // prepare open list for processing
             Queue<Vector3Int> tmp = openList;
             openList = nextOpenList;
@@ -61,17 +92,30 @@ public class CursorManager : MonoBehaviour
                 if (closedList.Contains(coords)) continue;
 
                 // update flow map score
-                map.grid[coords.x][coords.y] = score;
+                map.grid[coords.x + map.grid.Length / 2][coords.y + map.grid[0].Length / 2] = score;
+                // Debug.Log(coords + "=" + score);
 
                 // find all surrounding pipes
                 // filter the connected ones
                 // add them to next open list
-                PipeTile pipeTile = GetPipeTile(allTiles, coords.x, coords.y);
-                for (int i = -1; i < 1; i++)
+                PipeTile pipeTile = tilemapPipes.GetTile<PipeTile>(coords);
+                if (pipeTile == null)
                 {
-                    for (int j = -1; j < 1; j++)
+                    pipeTile = tilemapEndpoints.GetTile<PipeTile>(coords);
+                }
+
+                for (int i = -1; i <= 1; i++)
+                {
+                    for (int j = -1; j <= 1; j++)
                     {
-                        PipeTile otherPipeTile = GetPipeTile(allTiles, coords.x + i, coords.y + j);
+                        var point = new Vector3Int(coords.x + i, coords.y + j, coords.z);
+
+                        PipeTile otherPipeTile = tilemapPipes.GetTile<PipeTile>(point);
+                        if (otherPipeTile == null)
+                        {
+                            otherPipeTile = tilemapEndpoints.GetTile<PipeTile>(point);
+                        }
+
                         if (otherPipeTile != null)
                         {
                             var connected = AreConnected(pipeTile.Type, i, j, otherPipeTile.Type);
@@ -85,17 +129,7 @@ public class CursorManager : MonoBehaviour
 
                 closedList.Add(coords);
             }
-
-            // increase score for all pipes at distance d+1
-            score++;
         }
-    }
-
-    private PipeTile GetPipeTile(TileBase[] allTiles, int x, int y)
-    {
-        TileBase tile = allTiles[x + y * tilemap.cellBounds.size.x];
-        if (tile != null && tile is PipeTile) return (PipeTile) tile;
-        return null;
     }
 
     private bool AreConnected(TileType refType, int otherRelX, int otherRelY, TileType otherType)
