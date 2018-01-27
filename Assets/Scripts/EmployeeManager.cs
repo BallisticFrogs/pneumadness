@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using domain;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class EmployeeManager : MonoBehaviour
 {

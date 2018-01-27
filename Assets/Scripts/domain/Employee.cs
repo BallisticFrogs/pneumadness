@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 
-namespace domain
+public class Employee : MonoBehaviour
 {
-    public class Employee : MonoBehaviour
-    {
+    public bool active;
 
-        public bool active;
-
-        public Vector3Int pipeEndpoint;
-
-    }
+    public Vector3Int pipeEndpoint;
 }
