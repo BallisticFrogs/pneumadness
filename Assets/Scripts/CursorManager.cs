@@ -93,13 +93,13 @@ public class CursorManager : MonoBehaviour
 
                 // update flow map score
                 map.grid[coords.x + map.grid.Length / 2][coords.y + map.grid[0].Length / 2] = score;
-                // Debug.Log(coords + "=" + score);
+                Debug.Log(coords + "=" + score);
 
                 // find all surrounding pipes
                 // filter the connected ones
                 // add them to next open list
                 PipeTile pipeTile = tilemapPipes.GetTile<PipeTile>(coords);
-                if (pipeTile == null)
+                if (pipeTile == null || pipeTile.Type == TileType.OFFICE)
                 {
                     pipeTile = tilemapEndpoints.GetTile<PipeTile>(coords);
                 }
@@ -111,7 +111,7 @@ public class CursorManager : MonoBehaviour
                         var point = new Vector3Int(coords.x + i, coords.y + j, coords.z);
 
                         PipeTile otherPipeTile = tilemapPipes.GetTile<PipeTile>(point);
-                        if (otherPipeTile == null)
+                        if (otherPipeTile == null || otherPipeTile.Type == TileType.OFFICE)
                         {
                             otherPipeTile = tilemapEndpoints.GetTile<PipeTile>(point);
                         }
