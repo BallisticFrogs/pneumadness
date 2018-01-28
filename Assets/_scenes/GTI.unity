@@ -1159,7 +1159,12 @@ Prefab:
     - target: {fileID: 114566206252709548, guid: 8962c2bd1d5d1a54093ff63e41ebccf2,
         type: 2}
       propertyPath: arrivalDelay
-      value: 0
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114566206252709548, guid: 8962c2bd1d5d1a54093ff63e41ebccf2,
+        type: 2}
+      propertyPath: productivity
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8962c2bd1d5d1a54093ff63e41ebccf2, type: 2}
@@ -1206,7 +1211,12 @@ Prefab:
     - target: {fileID: 114166401191698676, guid: a483be75cb4b0aa4cab7a766578ef39b,
         type: 2}
       propertyPath: arrivalDelay
-      value: 0
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166401191698676, guid: a483be75cb4b0aa4cab7a766578ef39b,
+        type: 2}
+      propertyPath: productivity
+      value: 0.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a483be75cb4b0aa4cab7a766578ef39b, type: 2}

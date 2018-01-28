@@ -50,6 +50,12 @@ public class UserActionManager : MonoBehaviour
 
             // update flow maps
             CursorManager.INSTANCE.UpdateFlowMaps();
+            
+            // check for victory
+            if (CursorManager.INSTANCE.IsGameWon())
+            {
+                GameOverManager.INSTANCE.Victory();
+            }
         }
     }
 

@@ -162,9 +162,11 @@ public class CursorManager : MonoBehaviour
 
     public Vector3Int FindNextCellRandom(Vector3Int currentCell, Vector3Int previousCell)
     {
+        bool isCurrentlyOnEndpoint = false;
         var tile = tilemapPipes.GetTile<PipeTile>(currentCell);
         if (tile == null || tile.Type == TileType.OFFICE)
         {
+            isCurrentlyOnEndpoint = true;
             tile = tilemapEndpoints.GetTile<PipeTile>(currentCell);
         }
 
@@ -185,12 +187,12 @@ public class CursorManager : MonoBehaviour
                     otherPipeTile = tilemapEndpoints.GetTile<PipeTile>(point);
                 }
 
-                bool connected;
+                bool connected = false;
                 if (otherPipeTile != null)
                 {
                     connected = AreConnected(tile.Type, i, j, otherPipeTile.Type);
                 }
-                else
+                else if (!isCurrentlyOnEndpoint)
                 {
                     connected = AreConnected(tile.Type, i, j, TileType.PIPE_BEND_CROSS);
                 }
@@ -199,24 +201,30 @@ public class CursorManager : MonoBehaviour
             }
         }
 
-        var random = Random.Range(0, choices.Count - 1);
-        return choices[random];
+        if (choices.Count > 0)
+        {
+            var random = Random.Range(0, choices.Count - 1);
+            return choices[random];
+        }
 
-//        List<Dir> choices = new List<Dir>();
-//        var tile = tilemapPipes.GetTile<PipeTile>(currentCell);
-//        if (tile.Type.IsConnectedTo(Dir.UP) && currentCell.y != previousCell.y - 1) choices.Add(Dir.UP);
-//        if (tile.Type.IsConnectedTo(Dir.DOWN) && currentCell.y != previousCell.y + 1) choices.Add(Dir.DOWN);
-//        if (tile.Type.IsConnectedTo(Dir.LEFT) && currentCell.x != previousCell.x + 1) choices.Add(Dir.LEFT);
-//        if (tile.Type.IsConnectedTo(Dir.RIGHT) && currentCell.x != previousCell.x - 1) choices.Add(Dir.RIGHT);
-//
-//        // choose one option
-//        var random = Random.Range(0, choices.Count - 1);
-//        var dir = choices[random];
-//
-//        // compute cell coords
-//        if (dir == Dir.UP) return currentCell + new Vector3Int(0, 1, 0);
-//        if (dir == Dir.DOWN) return currentCell + new Vector3Int(0, -1, 0);
-//        if (dir == Dir.LEFT) return currentCell + new Vector3Int(-1, 0, 0);
-//        return currentCell + new Vector3Int(1, 0, 0);
+        return previousCell;
+    }
+
+    public bool IsGameWon()
+    {
+        var employeeCount = EmployeeManager.INSTANCE.rootObj.transform.childCount;
+
+        for (int i = 0; i < employeeCount; i++)
+        {
+            var employee = EmployeeManager.INSTANCE.GetEmployee(i);
+            for (int j = 0; j < employeeCount; j++)
+            {
+                if (i == j) continue;
+                var canReachDestination = CanReachDestination(employee.pipeEndpoint, j);
+                if (!canReachDestination) return false;
+            }
+        }
+
+        return true;
     }
 }

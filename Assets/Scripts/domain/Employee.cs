@@ -11,8 +11,6 @@ public class Employee : MonoBehaviour
 
     public GameObject roomActiveSprite;
 
-    public int messageQuota;
-
     [HideInInspector] public float arrivalProgress;
     [HideInInspector] public float messageProgress;
     [HideInInspector] public float messageSendProgress;

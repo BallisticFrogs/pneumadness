@@ -48,16 +48,16 @@ public class Cursor : MonoBehaviour
         var grid = UserActionManager.INSTANCE.grid;
         var currentCell = grid.WorldToCell(transform.position);
 
-        // TODO if the message is in empty space, it is lost
+        // if the message is in empty space, it is lost
         // and player looses one life
         var pipeTile = CursorManager.INSTANCE.tilemapPipesObj.GetComponent<Tilemap>().GetTile<PipeTile>(currentCell);
-        if (pipeTile == null)
+        if (pipeTile == null || pipeTile.Type == TileType.OFFICE)
         {
             pipeTile = CursorManager.INSTANCE.tilemapEndpointsObj.GetComponent<Tilemap>()
                 .GetTile<PipeTile>(currentCell);
         }
 
-        if (pipeTile == null)
+        if (pipeTile == null || pipeTile.Type == TileType.OFFICE)
         {
             // loose a life
             LifeManager.INSTANCE.RemoveLife();
@@ -94,7 +94,7 @@ public class Cursor : MonoBehaviour
         else
         {
             // choose random path with no backtracking
-            var prevCell = previousCell.HasValue ? previousCell.Value : new Vector3Int(-100, -100, -100);
+            var prevCell = previousCell.HasValue ? previousCell.Value : new Vector3Int(-100, -100, 0);
             nextCell = CursorManager.INSTANCE.FindNextCellRandom(currentCell, prevCell);
             waypoint2 = grid.CellToWorld(nextCell.Value) + 0.5f * grid.cellSize;
         }

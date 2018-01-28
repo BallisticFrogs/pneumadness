@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -18,5 +16,11 @@ public class GameOverManager : MonoBehaviour
     {
         gameOverSpriteRenderer.gameObject.active = true;
         Time.timeScale = 0;
+    }
+
+    public void Victory()
+    {
+        // TODO
+        Debug.Log("Victory");
     }
 }
