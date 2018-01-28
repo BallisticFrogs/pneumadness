@@ -7,6 +7,8 @@ public class UserActionManager : MonoBehaviour
 {
     public static UserActionManager INSTANCE;
 
+    public AudioClip pipeAdded;
+
     public Grid grid;
 
     public Tilemap tilemapObj;
@@ -38,6 +40,7 @@ public class UserActionManager : MonoBehaviour
             UIManager.INSTANCE.updateQueue(QueueManager.INSTANCE.GetNextPipe());
             tilemapObj.SetTile(cellPositionInt, pipe);
             tilemapObj.RefreshTile(cellPositionInt);
+            SoundManager.INSTANCE.PlayFx(pipeAdded);
             
             CursorManager.INSTANCE.UpdateFlowMaps();
         }
