@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -21,7 +22,18 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void Victory()
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (gameOverSpriteRenderer.gameObject.active == true && Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
+    }
+}    public void Victory()
     {
         // TODO
         SoundManager.INSTANCE.PlayFx(victoryFx);
