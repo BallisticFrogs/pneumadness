@@ -68,29 +68,14 @@ public class EmployeeManager : MonoBehaviour
         {
             employee.messageSendProgress = 0;
 
-            // check the message can reach its destination
-            var targetIndex = employee.waitingMessages.Peek();
-            var canBeSent = CursorManager.INSTANCE.CanReachDestination(employee.pipeEndpoint, targetIndex);
-            if (canBeSent)
-            {
-                // remove from waiting queue
-                employee.waitingMessages.Dequeue();
+            // remove from waiting queue
+            var targetIndex = employee.waitingMessages.Dequeue();
 
-                // spawn a cursor
-                var targetEmployee = GetEmployee(targetIndex);
-                var cursorObj = Instantiate(targetEmployee.cursorPrefab, cursorsRootObj.transform);
-                var grid = endpointsGridLayer.transform.parent.gameObject.GetComponent<Grid>();
-                cursorObj.transform.position = grid.CellToWorld(employee.pipeEndpoint) + 0.5f * grid.cellSize;
-            }
-            else
-            {
-                // TODO show warning and/or sound
-            }
-        }
-
-        if (employee.waitingMessages.Count > 5)
-        {
-            // TODO game over
+            // spawn a cursor
+            var targetEmployee = GetEmployee(targetIndex);
+            var cursorObj = Instantiate(targetEmployee.cursorPrefab, cursorsRootObj.transform);
+            var grid = endpointsGridLayer.transform.parent.gameObject.GetComponent<Grid>();
+            cursorObj.transform.position = grid.CellToWorld(employee.pipeEndpoint) + 0.5f * grid.cellSize;
         }
     }
 
@@ -99,7 +84,9 @@ public class EmployeeManager : MonoBehaviour
         List<int> indexes = new List<int>();
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (i != senderIndex) indexes.Add(i);
+            if (i == senderIndex) continue;
+            var employee = GetEmployee(i);
+            if (employee.arrivalProgress >= employee.arrivalDelay) indexes.Add(i);
         }
 
         var randomIndex = Random.Range(0, indexes.Count - 1);

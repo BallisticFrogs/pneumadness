@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOverManager : MonoBehaviour {
-
+public class GameOverManager : MonoBehaviour
+{
     public static GameOverManager INSTANCE;
 
-    public Sprite gameOverSprite;
     public SpriteRenderer gameOverSpriteRenderer;
 
 
@@ -17,8 +16,7 @@ public class GameOverManager : MonoBehaviour {
 
     public void GameOver()
     {
-        gameOverSpriteRenderer.sprite = gameOverSprite;
+        gameOverSpriteRenderer.gameObject.active = true;
         Time.timeScale = 0;
     }
-
 }

@@ -159,4 +159,64 @@ public class CursorManager : MonoBehaviour
         int score = map.scoreFromGridCoords(senderEndpointCellCoords);
         return score > 0;
     }
+
+    public Vector3Int FindNextCellRandom(Vector3Int currentCell, Vector3Int previousCell)
+    {
+        var tile = tilemapPipes.GetTile<PipeTile>(currentCell);
+        if (tile == null || tile.Type == TileType.OFFICE)
+        {
+            tile = tilemapEndpoints.GetTile<PipeTile>(currentCell);
+        }
+
+        // compute possible options
+        List<Vector3Int> choices = new List<Vector3Int>();
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                if (i != 0 && j != 0) continue;
+
+                var point = new Vector3Int(currentCell.x + i, currentCell.y + j, currentCell.z);
+                if (point == previousCell) continue;
+
+                PipeTile otherPipeTile = tilemapPipes.GetTile<PipeTile>(point);
+                if (otherPipeTile == null || otherPipeTile.Type == TileType.OFFICE)
+                {
+                    otherPipeTile = tilemapEndpoints.GetTile<PipeTile>(point);
+                }
+
+                bool connected;
+                if (otherPipeTile != null)
+                {
+                    connected = AreConnected(tile.Type, i, j, otherPipeTile.Type);
+                }
+                else
+                {
+                    connected = AreConnected(tile.Type, i, j, TileType.PIPE_BEND_CROSS);
+                }
+
+                if (connected) choices.Add(point);
+            }
+        }
+
+        var random = Random.Range(0, choices.Count - 1);
+        return choices[random];
+
+//        List<Dir> choices = new List<Dir>();
+//        var tile = tilemapPipes.GetTile<PipeTile>(currentCell);
+//        if (tile.Type.IsConnectedTo(Dir.UP) && currentCell.y != previousCell.y - 1) choices.Add(Dir.UP);
+//        if (tile.Type.IsConnectedTo(Dir.DOWN) && currentCell.y != previousCell.y + 1) choices.Add(Dir.DOWN);
+//        if (tile.Type.IsConnectedTo(Dir.LEFT) && currentCell.x != previousCell.x + 1) choices.Add(Dir.LEFT);
+//        if (tile.Type.IsConnectedTo(Dir.RIGHT) && currentCell.x != previousCell.x - 1) choices.Add(Dir.RIGHT);
+//
+//        // choose one option
+//        var random = Random.Range(0, choices.Count - 1);
+//        var dir = choices[random];
+//
+//        // compute cell coords
+//        if (dir == Dir.UP) return currentCell + new Vector3Int(0, 1, 0);
+//        if (dir == Dir.DOWN) return currentCell + new Vector3Int(0, -1, 0);
+//        if (dir == Dir.LEFT) return currentCell + new Vector3Int(-1, 0, 0);
+//        return currentCell + new Vector3Int(1, 0, 0);
+    }
 }

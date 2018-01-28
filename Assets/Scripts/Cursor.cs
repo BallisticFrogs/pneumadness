@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Cursor : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Cursor : MonoBehaviour
     private Vector3 waypoint1;
     private Vector3 waypoint2;
     private float progress;
-    private bool done;
+    private bool canReachDestination;
+    private Vector3Int? previousCell;
 
     public void Start()
     {
@@ -45,24 +47,62 @@ public class Cursor : MonoBehaviour
     {
         var grid = UserActionManager.INSTANCE.grid;
         var currentCell = grid.WorldToCell(transform.position);
+
+        // TODO if the message is in empty space, it is lost
+        // and player looses one life
+        var pipeTile = CursorManager.INSTANCE.tilemapPipesObj.GetComponent<Tilemap>().GetTile<PipeTile>(currentCell);
+        if (pipeTile == null)
+        {
+            pipeTile = CursorManager.INSTANCE.tilemapEndpointsObj.GetComponent<Tilemap>()
+                .GetTile<PipeTile>(currentCell);
+        }
+
+        if (pipeTile == null)
+        {
+            // loose a life
+            LifeManager.INSTANCE.RemoveLife();
+            Destroy(gameObject);
+            return;
+        }
+
+        if (!canReachDestination)
+        {
+            // re-check if we can reach the destination
+            canReachDestination = CursorManager.INSTANCE.CanReachDestination(currentCell, targetIndex);
+        }
+
+        // compute point 1
         waypoint1 = grid.CellToWorld(currentCell) + 0.5f * grid.cellSize;
         // Debug.Log("currentCell=" + currentCell);
 
-        var nextCell = CursorManager.INSTANCE.FindNextCell(targetIndex, currentCell);
-        if (nextCell.HasValue)
+        // compute point 2
+        Vector3Int? nextCell;
+        if (canReachDestination)
         {
-            // Debug.Log("nextCell=" + nextCell.Value);
-            waypoint2 = grid.CellToWorld(nextCell.Value) + 0.5f * grid.cellSize;
+            // find next cell towards destination
+            nextCell = CursorManager.INSTANCE.FindNextCell(targetIndex, currentCell);
+            if (nextCell.HasValue)
+            {
+                // Debug.Log("nextCell=" + nextCell.Value);
+                waypoint2 = grid.CellToWorld(nextCell.Value) + 0.5f * grid.cellSize;
+            }
+            else
+            {
+                waypoint2 = waypoint1;
+            }
         }
         else
         {
-            waypoint2 = waypoint1;
+            // choose random path with no backtracking
+            var prevCell = previousCell.HasValue ? previousCell.Value : new Vector3Int(-100, -100, -100);
+            nextCell = CursorManager.INSTANCE.FindNextCellRandom(currentCell, prevCell);
+            waypoint2 = grid.CellToWorld(nextCell.Value) + 0.5f * grid.cellSize;
         }
 
-
+        previousCell = currentCell;
         if (nextCell == currentCell)
         {
-            done = true;
+            Destroy(gameObject);
         }
     }
 }

@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1114810438333900
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,8 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170f5280a564f684a904d2e36e5adb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverSprite: {fileID: 0}
-  gameOverSpriteRenderer: {fileID: 0}
+  gameOverSpriteRenderer: {fileID: 212700616869458916}
 --- !u!212 &212700616869458916
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,13 +116,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 03aed20d6d08f814fbb9c0006c0ed2fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.78, y: 1.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0

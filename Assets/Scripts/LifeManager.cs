@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
-public class LifeManager : MonoBehaviour {
-
+public class LifeManager : MonoBehaviour
+{
     public static LifeManager INSTANCE;
 
     public int initialLifeCount = 3;
@@ -18,7 +18,7 @@ public class LifeManager : MonoBehaviour {
     public SpriteRenderer life3;
 
 
-    void Awake ()
+    void Awake()
     {
         INSTANCE = this;
     }
@@ -29,11 +29,10 @@ public class LifeManager : MonoBehaviour {
         life1.sprite = lifeOK;
         life2.sprite = lifeOK;
         life3.sprite = lifeOK;
-
     }
 
-    public void RemoveLife ()
-	{
+    public void RemoveLife()
+    {
         currentLifeCount--;
         if (currentLifeCount == 3)
         {
@@ -41,19 +40,22 @@ public class LifeManager : MonoBehaviour {
             life2.sprite = lifeOK;
             life3.sprite = lifeOK;
         }
+
         if (currentLifeCount == 2)
         {
             life1.sprite = lifeOK;
             life2.sprite = lifeOK;
             life3.sprite = lifeKO;
         }
+
         if (currentLifeCount == 1)
         {
             life1.sprite = lifeOK;
             life2.sprite = lifeKO;
             life3.sprite = lifeKO;
         }
-        if (currentLifeCount == 0 )
+
+        if (currentLifeCount == 0)
         {
             life1.sprite = lifeKO;
             life2.sprite = lifeKO;
