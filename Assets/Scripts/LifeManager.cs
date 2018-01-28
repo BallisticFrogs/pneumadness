@@ -53,11 +53,12 @@ public class LifeManager : MonoBehaviour {
             life2.sprite = lifeKO;
             life3.sprite = lifeKO;
         }
-        if (currentLifeCount == 1 )
+        if (currentLifeCount == 0 )
         {
             life1.sprite = lifeKO;
             life2.sprite = lifeKO;
             life3.sprite = lifeKO;
+            GameOverManager.INSTANCE.GameOver();
         }
     }
 
