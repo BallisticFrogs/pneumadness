@@ -50,7 +50,7 @@ public class CursorManager : MonoBehaviour
         return null;
     }
 
-    private void UpdateFlowMaps()
+    public void UpdateFlowMaps()
     {
         foreach (var index in flowmapsById.Keys)
         {

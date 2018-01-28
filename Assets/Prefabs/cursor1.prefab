@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212248595553246838}
   - component: {fileID: 114485723694810886}
   m_Layer: 0
-  m_Name: cursor
+  m_Name: cursor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

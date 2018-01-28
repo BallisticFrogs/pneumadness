@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931727163766678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.927578, y: 3.667169, z: -0.048473675}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,5 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6863af35d7e856248b36c9be271e34fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tubeTile: {fileID: 0}
   grid: {fileID: 0}
+  tilemapObj: {fileID: 0}
