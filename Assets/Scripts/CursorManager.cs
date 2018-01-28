@@ -126,7 +126,7 @@ public class CursorManager : MonoBehaviour
         }
     }
 
-    private bool AreConnected(TileType refType, int otherRelX, int otherRelY, TileType otherType)
+    public static bool AreConnected(TileType refType, int otherRelX, int otherRelY, TileType otherType)
     {
         if (otherRelX != 0 && otherRelY != 0) return false;
 

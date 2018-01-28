@@ -52,9 +52,14 @@ public class QueueManager : MonoBehaviour
         return pipeQueue.Dequeue();
     }
 
-    public PipeTile[] GetNextPipe()
+    public PipeTile[] GetNextPipes()
     {
         return pipeQueue.ToArray();
+    }
+
+    public PipeTile GetNextPipe()
+    {
+        return pipeQueue.Peek();
     }
 
     private PipeTile GetRandomTubeWithProba()

@@ -21,4 +21,16 @@ public class UIManager : MonoBehaviour
         spriteRenderer1.sprite = tiles[1].sprite;
         spriteRenderer2.sprite = tiles[2].sprite;
     }
+
+    public void ShowMousePositionVald(bool valid)
+    {
+        if (valid)
+        {
+            mouse.color = Color.white;
+        }
+        else
+        {
+            mouse.color = Color.red;
+        }
+    }
 }
