@@ -87,7 +87,7 @@ public class CursorManager : MonoBehaviour
 
                 // update flow map score
                 map.grid[coords.x + map.grid.Length / 2][coords.y + map.grid[0].Length / 2] = score;
-                Debug.Log(coords + "=" + score);
+                // Debug.Log(coords + "=" + score);
 
                 // find all surrounding pipes
                 // filter the connected ones
