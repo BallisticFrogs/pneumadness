@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverSpriteRenderer: {fileID: 212700616869458916}
+  defeatFx: {fileID: 8300000, guid: 221c36d495c19fb47894e2383ce7b5a5, type: 3}
+  victoryFx: {fileID: 8300000, guid: 546cd3f5c50216b4297c65c41b43f5ff, type: 3}
 --- !u!212 &212700616869458916
 SpriteRenderer:
   m_ObjectHideFlags: 1

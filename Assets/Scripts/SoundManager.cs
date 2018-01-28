@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
@@ -26,7 +24,13 @@ public class SoundManager : MonoBehaviour
     public AudioClip random_atmosphere_12;
     public AudioClip random_atmosphere_13;
 
-    private int randomMusic  = 0;
+    public AudioClip officeOnFx;
+
+    public AudioClip spawnCursorFx;
+    public AudioClip cursorArrivedFx;
+    public AudioClip cursorLostFx;
+
+    private int randomMusic = 0;
     private float randomTime = 0f;
     private float timeCounter = 1f;
     private List<AudioClip> ambientClip;
@@ -66,6 +70,7 @@ public class SoundManager : MonoBehaviour
             fxSource.clip = ambientClip[randomMusic];
             fxSource.Play();
         }
+
         timeCounter += Time.deltaTime;
     }
 

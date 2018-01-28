@@ -291,3 +291,6 @@ MonoBehaviour:
     type: 3}
   random_atmosphere_13: {fileID: 8300000, guid: dec714529bd956e4fb8f56904113a04d,
     type: 3}
+  spawnCursorFx: {fileID: 8300000, guid: 529acfb87fed32a4f8b05916cb3403ad, type: 3}
+  cursorArrivedFx: {fileID: 8300000, guid: 94e16172aa58bfc4cbe15ba5a299ebe5, type: 3}
+  cursorLostFx: {fileID: 8300000, guid: 60c78b416addba4408d204e8ed7f9fda, type: 3}

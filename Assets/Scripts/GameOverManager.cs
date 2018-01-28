@@ -6,6 +6,8 @@ public class GameOverManager : MonoBehaviour
 
     public SpriteRenderer gameOverSpriteRenderer;
 
+    public AudioClip defeatFx;
+    public AudioClip victoryFx;
 
     void Awake()
     {
@@ -14,6 +16,7 @@ public class GameOverManager : MonoBehaviour
 
     public void GameOver()
     {
+        SoundManager.INSTANCE.PlayFx(defeatFx);
         gameOverSpriteRenderer.gameObject.active = true;
         Time.timeScale = 0;
     }
@@ -21,6 +24,7 @@ public class GameOverManager : MonoBehaviour
     public void Victory()
     {
         // TODO
+        SoundManager.INSTANCE.PlayFx(victoryFx);
         Debug.Log("Victory");
     }
 }

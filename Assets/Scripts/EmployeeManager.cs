@@ -39,7 +39,7 @@ public class EmployeeManager : MonoBehaviour
     public void UpdateEmpoyee(int index)
     {
         Employee employee = GetEmployee(index);
-        
+
         // handle delayed arrivals
         if (employee.arrivalProgress < employee.arrivalDelay || (employee.arrivalDelay == 0))
         {
@@ -50,6 +50,7 @@ public class EmployeeManager : MonoBehaviour
 
             if (employee.arrivalProgress >= employee.arrivalDelay)
             {
+                SoundManager.INSTANCE.PlayFx(SoundManager.INSTANCE.cursorLostFx);
                 employee.SetActive();
             }
         }
@@ -77,6 +78,7 @@ public class EmployeeManager : MonoBehaviour
             var cursorObj = Instantiate(targetEmployee.cursorPrefab, cursorsRootObj.transform);
             var grid = endpointsGridLayer.transform.parent.gameObject.GetComponent<Grid>();
             cursorObj.transform.position = grid.CellToWorld(employee.pipeEndpoint) + 0.5f * grid.cellSize;
+            SoundManager.INSTANCE.PlayFx(SoundManager.INSTANCE.spawnCursorFx);
         }
     }
 
@@ -135,5 +137,4 @@ public class EmployeeManager : MonoBehaviour
         var childTransform = rootObj.transform.GetChild(index);
         return childTransform.gameObject.GetComponent<Employee>();
     }
-
 }

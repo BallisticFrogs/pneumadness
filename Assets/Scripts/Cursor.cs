@@ -60,6 +60,7 @@ public class Cursor : MonoBehaviour
         if (pipeTile == null || pipeTile.Type == TileType.OFFICE)
         {
             // loose a life
+            SoundManager.INSTANCE.PlayFx(SoundManager.INSTANCE.cursorLostFx);
             LifeManager.INSTANCE.RemoveLife();
             Destroy(gameObject);
             return;
@@ -102,6 +103,7 @@ public class Cursor : MonoBehaviour
         previousCell = currentCell;
         if (nextCell == currentCell)
         {
+            SoundManager.INSTANCE.PlayFx(SoundManager.INSTANCE.cursorArrivedFx);
             Destroy(gameObject);
         }
     }
