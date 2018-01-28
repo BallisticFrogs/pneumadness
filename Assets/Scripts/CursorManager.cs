@@ -33,27 +33,22 @@ public class CursorManager : MonoBehaviour
         FlowMap map;
         flowmapsById.TryGetValue(targetIndex, out map);
 
-        int lowestScore = int.MaxValue;
-        Vector3Int? lowestScoreCell = null;
+        int currentScore = map.scoreFromGridCoords(currentCell);
+        ;
         for (int i = -1; i <= 1; i++)
         {
             for (int j = -1; j <= 1; j++)
             {
-                var coords = new Vector3Int(currentCell.x + i + map.grid.Length / 2,
-                    currentCell.y + j + map.grid[0].Length / 2,
-                    currentCell.z);
-                if (coords.x > map.grid.Length || coords.y > map.grid[0].Length) continue;
-
-                var cellScore = map.grid[coords.x][coords.y];
-                if (cellScore > 0 && cellScore < lowestScore)
+                var point = new Vector3Int(currentCell.x + i, currentCell.y + j, currentCell.z);
+                var cellScore = map.scoreFromGridCoords(point);
+                if (cellScore > 0 && cellScore == currentScore - 1)
                 {
-                    lowestScore = cellScore;
-                    lowestScoreCell = new Vector3Int(currentCell.x + i, currentCell.y + j, currentCell.z);
+                    return point;
                 }
             }
         }
 
-        return lowestScoreCell;
+        return null;
     }
 
     private void UpdateFlowMaps()
@@ -68,7 +63,7 @@ public class CursorManager : MonoBehaviour
 
     private void UpdateFlowMap(FlowMap map, Vector3Int pipeEnd)
     {
-        // TODO if pipe tiles are destroyed, we should reset the all grid but ignore for now
+        // TODO if pipe tiles are destroyed, we should reset the whole grid but ignore for now
 
         HashSet<Vector3Int> closedList = new HashSet<Vector3Int>();
         Queue<Vector3Int> openList = new Queue<Vector3Int>();
