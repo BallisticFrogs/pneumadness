@@ -53,3 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   tilemapObj: {fileID: 0}
+  pipeError: {fileID: 8300000, guid: ee357ac7c2d3e634eabda98c7221f4c7, type: 3}
+  pipeBuilt:
+  - {fileID: 8300000, guid: 77555181e9120e445b620200558d5220, type: 3}
+  - {fileID: 8300000, guid: 1b70f885db5bb564e8b27dc51c70f772, type: 3}
+  - {fileID: 8300000, guid: 74d9d545089635c4d886aed50a938cc1, type: 3}
+  - {fileID: 8300000, guid: 75fff2d1d6a22e440905b8a7974fe9a9, type: 3}

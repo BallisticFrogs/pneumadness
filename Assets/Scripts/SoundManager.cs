@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -23,7 +22,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayFx(List<AudioClip> clips)
     {
-        var index = Random.Range(0, clips.Count);
+        var index = Random.Range(0, clips.Count - 1);
         PlayFx(clips[index]);
     }
 }

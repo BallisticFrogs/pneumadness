@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,11 +6,12 @@ public class UserActionManager : MonoBehaviour
 {
     public static UserActionManager INSTANCE;
 
-    public AudioClip pipeAdded;
-
     public Grid grid;
 
     public Tilemap tilemapObj;
+
+    public AudioClip pipeError;
+    public List<AudioClip> pipeBuilt;
 
     void Awake()
     {
@@ -36,12 +36,16 @@ public class UserActionManager : MonoBehaviour
             // TODO check conflict
             // TODO check connectivity
 
+            // build pipe
             PipeTile pipe = QueueManager.INSTANCE.DequeuePipe();
             UIManager.INSTANCE.updateQueue(QueueManager.INSTANCE.GetNextPipe());
             tilemapObj.SetTile(cellPositionInt, pipe);
             tilemapObj.RefreshTile(cellPositionInt);
-            SoundManager.INSTANCE.PlayFx(pipeAdded);
-            
+
+            // play sound
+            SoundManager.INSTANCE.PlayFx(pipeBuilt);
+
+            // update flow maps
             CursorManager.INSTANCE.UpdateFlowMaps();
         }
     }
