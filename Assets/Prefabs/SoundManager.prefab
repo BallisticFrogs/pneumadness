@@ -274,3 +274,20 @@ MonoBehaviour:
   volume: 1
   bgmSource: {fileID: 82299277187049048}
   fxSource: {fileID: 82953932517991360}
+  random_atmosphere_1: {fileID: 8300000, guid: baadfde3fcb37b14383f3802e52bec39, type: 3}
+  random_atmosphere_2: {fileID: 8300000, guid: fdafd07e14888664fac67e64e1a9c2da, type: 3}
+  random_atmosphere_3: {fileID: 8300000, guid: 0a56796fb34338845b960b4f93346085, type: 3}
+  random_atmosphere_4: {fileID: 8300000, guid: 4bfeda9a957e03c4a9624936017d2bd6, type: 3}
+  random_atmosphere_5: {fileID: 8300000, guid: 2134a3f30cf4a4e44bceb69a7b67be8c, type: 3}
+  random_atmosphere_6: {fileID: 8300000, guid: 04080b3d680ebf94387af4d7e856a066, type: 3}
+  random_atmosphere_7: {fileID: 8300000, guid: aa34f2d45653f0e449ca91412260c461, type: 3}
+  random_atmosphere_8: {fileID: 8300000, guid: 3c3b963aff693894781fb5b7aacfc55c, type: 3}
+  random_atmosphere_9: {fileID: 8300000, guid: 20a2c69dcfeaedb45bd1bb906c799745, type: 3}
+  random_atmosphere_10: {fileID: 8300000, guid: a4a15252eb90db440a3a873a5226c660,
+    type: 3}
+  random_atmosphere_11: {fileID: 8300000, guid: 1381f95ea8743b24dafe33e1eab416d6,
+    type: 3}
+  random_atmosphere_12: {fileID: 8300000, guid: a90ade8ce9e3b324cb66570a0233beef,
+    type: 3}
+  random_atmosphere_13: {fileID: 8300000, guid: dec714529bd956e4fb8f56904113a04d,
+    type: 3}

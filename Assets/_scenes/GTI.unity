@@ -2926,6 +2926,11 @@ Prefab:
       propertyPath: tilemapObj
       value: 
       objectReference: {fileID: 470536156}
+    - target: {fileID: 114311369523198448, guid: c1fa0600355c4064fa2acb4493fde14c,
+        type: 2}
+      propertyPath: pipeBuilt.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 316b43e372d10884caecea748f6b77b4, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1fa0600355c4064fa2acb4493fde14c, type: 2}
   m_IsPrefabParent: 0
