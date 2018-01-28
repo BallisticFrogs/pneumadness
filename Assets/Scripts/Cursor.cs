@@ -2,9 +2,9 @@
 
 public class Cursor : MonoBehaviour
 {
-    public int targetIndex;
-
     public float speed = 1;
+
+    [HideInInspector] public int targetIndex;
 
     private Vector3 waypoint1;
     private Vector3 waypoint2;

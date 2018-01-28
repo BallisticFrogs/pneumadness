@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetIndex: 0
-  speed: 20
+  speed: 40
 --- !u!212 &212248595553246838
 SpriteRenderer:
   m_ObjectHideFlags: 1

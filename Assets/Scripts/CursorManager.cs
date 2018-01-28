@@ -152,4 +152,11 @@ public class CursorManager : MonoBehaviour
 
         return false;
     }
+
+    public bool CanReachDestination(Vector3Int senderEndpointCellCoords, int targetIndex)
+    {
+        FlowMap map = flowmapsById[targetIndex];
+        int score = map.scoreFromGridCoords(senderEndpointCellCoords);
+        return score > 0;
+    }
 }
