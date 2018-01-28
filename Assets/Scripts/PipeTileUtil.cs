@@ -1,4 +1,5 @@
-﻿#if UNITY_EDITOR
+﻿/*
+#if UNITY_EDITOR
     using UnityEditor;
 #endif
 using UnityEngine;
@@ -13,4 +14,4 @@ public class PipeTileUtil : MonoBehaviour
         var pipeTile = ScriptableObject.CreateInstance<PipeTile>();
         AssetDatabase.CreateAsset(pipeTile, "Tiles/New Pipe Tile");
     }
-}
+}*/
