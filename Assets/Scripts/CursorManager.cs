@@ -22,7 +22,6 @@ public class CursorManager : MonoBehaviour
 
     public void RegisterEndpoint(int index, Vector3Int endpoint)
     {
-        BoundsInt bounds = tilemapPipes.cellBounds;
         FlowMap flowMap = new FlowMap(index, 50, 50);
         UpdateFlowMap(flowMap, endpoint);
         flowmapsById.Add(flowMap.employee, flowMap);

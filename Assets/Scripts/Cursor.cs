@@ -32,6 +32,13 @@ public class Cursor : MonoBehaviour
 
         // move
         transform.position = waypoint1 + progress * (waypoint2 - waypoint1);
+
+        // rotate
+        if (waypoint1 != waypoint2)
+        {
+            var angle = Vector3.Angle(waypoint2 - waypoint1, Vector3.up);
+            transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        }
     }
 
     private void RecomputeWaypoints()
