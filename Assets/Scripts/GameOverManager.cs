@@ -9,6 +9,7 @@ public class GameOverManager : MonoBehaviour
 
     public AudioClip defeatFx;
     public AudioClip victoryFx;
+    public SpriteRenderer victorySpriteRenderer;
 
     void Awake()
     {
@@ -26,15 +27,29 @@ public class GameOverManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (gameOverSpriteRenderer.gameObject.active == true && Time.timeScale == 0)
+            if ((gameOverSpriteRenderer.gameObject.active == true || victorySpriteRenderer.gameObject.active == true) && Time.timeScale == 0)
             {
                 Time.timeScale = 1;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                int currentScene = SceneManager.GetActiveScene().buildIndex;
+                if (gameOverSpriteRenderer.gameObject.active == true)
+                {
+                    SceneManager.LoadScene(currentScene);
+                } else if (victorySpriteRenderer.gameObject.active == true)
+                {
+                    if (currentScene >= 2)
+                    {
+                        Application.Quit();
+                    }
+                    SceneManager.LoadScene(currentScene+1);
+                }
             }
         }
     }
-}    public void Victory()
+
+    public void Victory()
     {
+        victorySpriteRenderer.gameObject.active = true;
+        Time.timeScale = 0;
         // TODO
         SoundManager.INSTANCE.PlayFx(victoryFx);
         Debug.Log("Victory");
