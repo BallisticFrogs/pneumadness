@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_scenes/main.unity
     guid: 392891d9f2a023b43896a352ef4e9996
+  - enabled: 1
+    path: Assets/_scenes/GTI.unity
+    guid: a6e0d034530bfc1469d28ec54b55eb7f
