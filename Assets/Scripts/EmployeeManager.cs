@@ -49,7 +49,7 @@ public class EmployeeManager : MonoBehaviour
 
             if (employee.arrivalProgress >= employee.arrivalDelay)
             {
-                // TODO handle arrival
+                employee.SetActive();
             }
         }
 
@@ -135,9 +135,4 @@ public class EmployeeManager : MonoBehaviour
         return childTransform.gameObject.GetComponent<Employee>();
     }
 
-    public void ActivateEmployee(int index)
-    {
-        var childTransform = rootObj.transform.GetChild(index);
-//        childTransform.gameObject.GetComponent<>();
-    }
 }

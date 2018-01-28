@@ -1161,16 +1161,6 @@ Prefab:
       propertyPath: arrivalDelay
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114566206252709548, guid: 8962c2bd1d5d1a54093ff63e41ebccf2,
-        type: 2}
-      propertyPath: productivity
-      value: 0.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 114566206252709548, guid: 8962c2bd1d5d1a54093ff63e41ebccf2,
-        type: 2}
-      propertyPath: messageQuota
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8962c2bd1d5d1a54093ff63e41ebccf2, type: 2}
   m_IsPrefabParent: 0
@@ -1215,24 +1205,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114166401191698676, guid: a483be75cb4b0aa4cab7a766578ef39b,
         type: 2}
-      propertyPath: cursorPrefab
-      value: 
-      objectReference: {fileID: 1748118039416908, guid: 3be21b7ba51eab0458ed5b6f0c3946a0,
-        type: 2}
-    - target: {fileID: 114166401191698676, guid: a483be75cb4b0aa4cab7a766578ef39b,
-        type: 2}
       propertyPath: arrivalDelay
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114166401191698676, guid: a483be75cb4b0aa4cab7a766578ef39b,
-        type: 2}
-      propertyPath: productivity
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114166401191698676, guid: a483be75cb4b0aa4cab7a766578ef39b,
-        type: 2}
-      propertyPath: messageQuota
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a483be75cb4b0aa4cab7a766578ef39b, type: 2}

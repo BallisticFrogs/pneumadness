@@ -9,6 +9,8 @@ public class Employee : MonoBehaviour
 
     public float productivity;
 
+    public GameObject roomActiveSprite;
+
     public int messageQuota;
 
     [HideInInspector] public float arrivalProgress;
@@ -16,4 +18,10 @@ public class Employee : MonoBehaviour
     [HideInInspector] public float messageSendProgress;
     [HideInInspector] public Vector3Int pipeEndpoint;
     [HideInInspector] public Queue<int> waitingMessages = new Queue<int>();
+
+    public void SetActive()
+    {
+        roomActiveSprite.SetActive(false);
+    }
+    
 }
