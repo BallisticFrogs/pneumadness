@@ -46,12 +46,12 @@ public class Cursor : MonoBehaviour
         var grid = UserActionManager.INSTANCE.grid;
         var currentCell = grid.WorldToCell(transform.position);
         waypoint1 = grid.CellToWorld(currentCell) + 0.5f * grid.cellSize;
-        Debug.Log("currentCell=" + currentCell);
+        // Debug.Log("currentCell=" + currentCell);
 
         var nextCell = CursorManager.INSTANCE.FindNextCell(targetIndex, currentCell);
         if (nextCell.HasValue)
         {
-            Debug.Log("nextCell=" + nextCell.Value);
+            // Debug.Log("nextCell=" + nextCell.Value);
             waypoint2 = grid.CellToWorld(nextCell.Value) + 0.5f * grid.cellSize;
         }
         else
