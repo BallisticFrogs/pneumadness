@@ -39,10 +39,11 @@ public class EmployeeManager : MonoBehaviour
     public void UpdateEmpoyee(int index)
     {
         Employee employee = GetEmployee(index);
-
+        
         // handle delayed arrivals
-        if (employee.arrivalProgress < employee.arrivalDelay)
+        if (employee.arrivalProgress < employee.arrivalDelay || (employee.arrivalDelay == 0))
         {
+            //TODO avoid to update every frame
             employee.arrivalProgress += Time.deltaTime;
 
             // TODO show warning to player an employee is going to arrive
