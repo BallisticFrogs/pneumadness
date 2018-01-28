@@ -18,6 +18,7 @@ public class GameOverManager : MonoBehaviour {
     public void GameOver()
     {
         gameOverSpriteRenderer.sprite = gameOverSprite;
+        Time.timeScale = 0;
     }
 
 }
