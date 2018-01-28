@@ -42,7 +42,7 @@ public class EmployeeManager : MonoBehaviour
 
         Vector3 employeeCellPos = grid.WorldToCell(childTransform.position);
         Vector3Int employeeCellCoords = Vector3Int.CeilToInt(employeeCellPos);
-        Debug.Log("Employee found at=" + employeeCellCoords);
+        //Debug.Log("Employee found at=" + employeeCellCoords);
 
         var tilemap = endpointsGridLayer.GetComponent<Tilemap>();
         TileBase[] allTiles = tilemap.GetTilesBlock(tilemap.cellBounds);
@@ -60,7 +60,7 @@ public class EmployeeManager : MonoBehaviour
                 if (endpoint != null)
                 {
                     employee.pipeEndpoint = point;
-                    Debug.Log("Employee endpoint found at=" + point);
+                    //Debug.Log("Employee endpoint found at=" + point);
 
                     CursorManager.INSTANCE.RegisterEndpoint(childIndex, point);
 

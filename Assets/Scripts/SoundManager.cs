@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
@@ -25,8 +27,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip random_atmosphere_13;
 
     private int randomMusic  = 0;
-    private float randomTime = 120f;
-    private float timeCounter = 0f;
+    private float randomTime = 0f;
+    private float timeCounter = 1f;
     private List<AudioClip> ambientClip;
 
     private void Awake()
@@ -58,7 +60,7 @@ public class SoundManager : MonoBehaviour
         if (timeCounter > randomTime && !fxSource.isPlaying)
         {
             fxSource.Stop();
-            randomTime = Random.Range(5000f, 20000f);
+            randomTime = Random.Range(2f, 15f);
             timeCounter = 0f;
             randomMusic = Random.Range(1, 13);
             fxSource.clip = ambientClip[randomMusic];
